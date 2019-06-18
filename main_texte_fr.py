@@ -67,7 +67,7 @@ def page_jeu_magasin(jeu):
                 os.rename(df2,df3)
                 print("Jeu téléchargé.")
             except:
-                print("Il y a eu une erreur lors du téléchargement du jeu.")
+                print("ERROR : Il y a eu une erreur lors du téléchargement du jeu.")
         page_jeu_magasin(jeu)
 
 def magasin():
@@ -89,7 +89,7 @@ def magasin():
         for ff in f:
             if ff not in [""," ","\b","'b","b''",'b"']:jeux.append( ff.split(c) )
     else:
-        print("Il y a eu une erreur, veuillez réessayer ultérieurement.")
+        print("ERROR : Il y a eu une erreur, veuillez réessayer ultérieurement.")
         print("Si il y un probleme, un bug, ou si vous voulez des renseignements, contactez moi à : nathpython@gmail.com")
     print("")
     print("#################################################################")
@@ -108,7 +108,7 @@ def magasin():
                 page_jeu_magasin(jeux[choix])
             else:
                 print("Vous ne pouvez faire cela.")
-        except: print("Vous ne pouvez faire cela.")
+        except: print("ERROR : Vous ne pouvez faire cela.")
         magasin()
 
 def calc_taille_dossier(dj,taille):
@@ -175,6 +175,18 @@ def bibliotheque():
 
 
 def menu():
+    try:
+        url="https://raw.githubusercontent.com/nath54/launcher_data/master/data.nath"
+        req = requests.get(url)
+        txxt=""
+        for chunk in req.iter_content(1000):
+            txxt+=str(chunk)
+        f=open(direm+"data.nath","w")
+        f.write(txxt)
+        f.close()
+    except:
+        print("ERROR : Il y a eu une erreur lors du téléchargement de la liste des jeux.")
+        print("Si il y un probleme, un bug, ou si vous voulez des renseignements, contactez moi à : nathpython@gmail.com")
     print("")
     print("#################################################################")
     print("")
