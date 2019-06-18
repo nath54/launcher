@@ -28,6 +28,11 @@ ccc=","
 
 
 def page_jeu_magasin(jeu):
+    jdt=False
+    nmj=False
+    if jeu[0] in direj:
+        jdt=True
+        version_p=open(
     print("")
     print("#################################################################")
     print("")
@@ -35,11 +40,15 @@ def page_jeu_magasin(jeu):
     print("")
     print("description : "+str(jeu[2]))
     print("")
-    print(" 1-télécharger le jeu")
+    if not jdt : print(" 1-télécharger le jeu")
+    elif jdt and nmj:
+        print(" 1-Le jeu n'est pas mis à jour, METTRE A JOUR LE JEU")
+    else:
+        print(" 1-Le jeu est déjà installé et mis à jour")
     print(" q-menu précédent")
     choix=inp(" : ")
     if choix!="q":
-        if choix=="1":
+        if choix=="1" and (not jdt or nmj):
             print("Téléchargement du jeu :")
             try:
                 print(" .requete de l'url..")
@@ -67,7 +76,7 @@ def page_jeu_magasin(jeu):
                 os.rename(df2,df3)
                 print("Jeu téléchargé.")
             except:
-                print("ERROR : Il y a eu une erreur lors du téléchargement du jeu.")
+                print("ERREUR : Il y a eu une erreur lors du téléchargement du jeu.")
         page_jeu_magasin(jeu)
 
 def magasin():
@@ -89,7 +98,7 @@ def magasin():
         for ff in f:
             if ff not in [""," ","\b","'b","b''",'b"']:jeux.append( ff.split(c) )
     else:
-        print("ERROR : Il y a eu une erreur, veuillez réessayer ultérieurement.")
+        print("ERREUR : Il y a eu une erreur, veuillez réessayer ultérieurement.")
         print("Si il y un probleme, un bug, ou si vous voulez des renseignements, contactez moi à : nathpython@gmail.com")
     print("")
     print("#################################################################")
@@ -108,7 +117,7 @@ def magasin():
                 page_jeu_magasin(jeux[choix])
             else:
                 print("Vous ne pouvez faire cela.")
-        except: print("ERROR : Vous ne pouvez faire cela.")
+        except: print("ERREUR : Vous ne pouvez faire cela.")
         magasin()
 
 def calc_taille_dossier(dj,taille):
@@ -135,6 +144,7 @@ def page_jeu_b(dj):
     print("")
     print(" 1-jouer au jeu")
     print(" 2-désinstaller le jeu")
+    print(" 3-voir la page du jeu du magasin")
     print(" q-quitter")
     choix=inp(" : ")
     if choix!="q":
@@ -147,6 +157,18 @@ def page_jeu_b(dj):
                 print("Désinstallation du jeu...")
                 shutil.rmtree(dj)
                 os.rmdir(dj)
+        if choix=="3":
+            if "data.nath" in os.listdir(direm):
+                jex=[]
+                jj=None
+                f=open(direm+"data.nath","r").read().split(cc)
+                for ff in f:
+                    if ff not in [""," ","\b","'b","b''",'b"']:jex.append( ff.split(c) )
+                for j in jex:
+                    if j[0]==nom: jj=j
+                if jj!=None: page_jeu_magasin(jj)
+                else: print("ERREUR : Ne peut pas accéder à la page du jeu du magasin")
+            else: print("ERREUR : Ne peut pas accéder à la page du jeu du magasin")
         if choix not in ["2"]: page_jeu_b(dj)
 
 def bibliotheque():
@@ -185,7 +207,7 @@ def menu():
         f.write(txxt)
         f.close()
     except:
-        print("ERROR : Il y a eu une erreur lors du téléchargement de la liste des jeux.")
+        print("ERREUR : Il y a eu une erreur lors du téléchargement de la liste des jeux.")
         print("Si il y un probleme, un bug, ou si vous voulez des renseignements, contactez moi à : nathpython@gmail.com")
     print("")
     print("#################################################################")
