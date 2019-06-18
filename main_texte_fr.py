@@ -32,7 +32,7 @@ def page_jeu_magasin(jeu):
     nmj=False
     if jeu[0] in direj:
         jdt=True
-        version_p=open(
+        #version_p=open()
     print("")
     print("#################################################################")
     print("")
