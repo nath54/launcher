@@ -35,7 +35,7 @@ def page_jeu_magasin(jeu):
         req = requests.get(jeu[4])
         for chunk in req.iter_content(1000):  version_i+=str(chunk)
     except: print("ERREUR : N'arrive pas à accéder à la dernière version du jeu")
-    if jeu[0] in direj:
+    if jeu[0] in os.listdir(direj):
         jdt=True
         version_p=open(direj+jeu[0]+"/version","r").read()
         if version_p!=version_i: nmj=True
