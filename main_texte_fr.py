@@ -31,13 +31,15 @@ def page_jeu_magasin(jeu):
     jdt=False
     nmj=False
     version_i=""
-    try:
+    if True:
         req = requests.get(jeu[4])
-        for chunk in req.iter_content(1000):  version_i+=str(chunk)
-    except: print("ERREUR : N'arrive pas à accéder à la dernière version du jeu")
+        for chunk in req.iter_content(1000):  version_i+=str(chunk,"utf-8")
+        version_i=str(version_i.replace("\n",""))
+    else: print("ERREUR : N'arrive pas à accéder à la dernière version du jeu")
     if jeu[0] in os.listdir(direj):
         jdt=True
         version_p=open(direj+jeu[0]+"/version","r").read()
+        version_p=str(version_p.replace("\n",""))
         if version_p!=version_i: nmj=True
     print("")
     print("#################################################################")
@@ -60,6 +62,9 @@ def page_jeu_magasin(jeu):
         if choix=="1" and (not jdt or nmj):
             print("Téléchargement du jeu :")
             try:
+                print(" .netoyage des fichiers inutiles...")
+                if jeu[0] in os.listdir(direj): shutil.rmtree(direj+jeu[0])
+                if jeu[0]+"1" in os.listdir(direj): shutil.rmtree(direj+jeu[0]+"1")
                 print(" .requete de l'url..")
                 url=jeu[1]
                 req = requests.get(url)
@@ -120,13 +125,13 @@ def magasin():
     print(" q-menu principal")
     choix=inp(" : ")
     if choix!="q":
-        try:
+        if True:
             choix=int(choix)-1
             if choix>=0 and choix < len(jeux):
                 page_jeu_magasin(jeux[choix])
             else:
                 print("Vous ne pouvez faire cela.")
-        except: print("ERREUR : Vous ne pouvez faire cela.")
+        else: print("ERREUR : Vous ne pouvez faire cela.")
         magasin()
 
 def calc_taille_dossier(dj,taille):
