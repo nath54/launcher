@@ -30,13 +30,22 @@ ccc=","
 def page_jeu_magasin(jeu):
     jdt=False
     nmj=False
+    version_i=""
+    try:
+        req = requests.get(jeu[4])
+        for chunk in req.iter_content(1000):  version_i+=str(chunk)
+    except: print("ERREUR : N'arrive pas à accéder à la dernière version du jeu")
     if jeu[0] in direj:
         jdt=True
-        #version_p=open()
+        version_p=open(direj+jeu[0]+"/version","r").read()
+        if version_p!=version_i: nmj=True
     print("")
     print("#################################################################")
     print("")
     print("Voici la page du jeu "+str(jeu[0]))
+    print("")
+    print("dernière version : "+version_i)
+    if jdt: print("version téléchargée : "+version_p)
     print("")
     print("description : "+str(jeu[2]))
     print("")
