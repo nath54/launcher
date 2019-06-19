@@ -1,0 +1,44 @@
+ERROR : Can not access the latest version of the game
+Here is the game page
+last version :
+downloaded version :
+description :
+ 1-download the game
+ 1-The game is not updated, UPDATE THE GAME
+ 1-The game is already installed and updated
+ q-previous menu
+Download the game :
+ .cleaning unnecessary files...
+ .request for the URL...
+ .zip file download...
+ .zip file extraction...
+ .cleaning unnecessary files...
+ .arrangement of files...
+Game downloaded.
+Downloading the required libraries.
+Librarie 
+ is already downloaded
+ERROR: There was an error while downloading the game.
+There was an error while downloading the games list.
+If there is a problem, a bug, or if you want information, contact me at: nathpython@gmail.com
+ERROR: There was an error, please try again later.
+Games available: 
+ q-Main Menu
+You can not do that.
+ERROR: You can not do that.
+Game Page: 
+size : 
+ 1-play
+ 2-uninstall the game
+ 3-see the game page of the store
+ q-exit
+Are you sure you want to delete this game? (Y / N)
+Uninstalling the game ...
+ERROR: Can not access the game page of the store
+Your games: 
+ q-return to the menu
+You can not do that.
+You are in the main menu, what do you want to do?
+ 1-see my games installed
+ 2-see available games
+ q-exit

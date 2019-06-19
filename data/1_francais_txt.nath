@@ -1,0 +1,44 @@
+ERREUR : N'arrive pas à accéder à la dernière version du jeu
+Voici la page du jeu 
+dernière version : 
+version téléchargée : 
+description : 
+ 1-télécharger le jeu
+ 1-Le jeu n'est pas mis à jour, METTRE A JOUR LE JEU
+ 1-Le jeu est déjà installé et mis à jour
+ q-menu précédent
+Téléchargement du jeu :
+ .nettoyage des fichiers inutiles...
+ .requête de l'url...
+ .téléchargement du fichier zip...
+ .extraction du fichier zip...
+ .netoyage des fichiers inutiles...
+ .arrangement des fichiers...
+Jeu téléchargé.
+Téléchargement des librairies requises.
+La librairie 
+ est déjà installée
+ERREUR : Il y a eu une erreur lors du téléchargement du jeu.
+Il y a eu une erreur lors du téléchargement de la liste des jeux.
+Si il y un probleme, un bug, ou si vous voulez des renseignements, contactez moi à : nathpython@gmail.com
+ERREUR : Il y a eu une erreur, veuillez réessayer ultérieurement.
+Jeux disponibles : 
+ q-menu principal
+Vous ne pouvez faire cela.
+ERREUR : Vous ne pouvez faire cela.
+Page du jeu : 
+taille : 
+ 1-jouer au jeu
+ 2-désinstaller le jeu
+ 3-voir la page du jeu du magasin
+ q-quitter
+Etes vous vraiment sur de supprimer ce jeu ? (Y/N)
+Désinstallation du jeu...
+ERREUR : Ne peut pas accéder à la page du jeu du magasin
+Vos jeux : 
+ q-revenir au menu
+Vous ne pouvez faire cela.
+Vous êtes dans le menu principal, que voulez vous faire ?
+ 1-voir mes jeux installés
+ 2-voir les jeux disponibles
+ q-quitter
