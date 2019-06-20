@@ -42,3 +42,4 @@ Vous êtes dans le menu principal, que voulez vous faire ?
  1-voir mes jeux installés
  2-voir les jeux disponibles
  q-quitter
+ATTENTION : Vous êtes sous python2, il est fortement conseillé d'utiliser python3, sinon, vous risquez d'avoir pleins de problèmes de conpatibilité.

@@ -68,7 +68,13 @@ c="#"
 cc="|"
 ccc=","
 
+vp=sys.version_info
+if vp[0]==2:
+    print(tl[44])
+    inp("")
 
+for o in os.listdir(direj):
+    if o[-1]=="1":  shutil.rmtree(direj+o)
 
 def page_jeu_magasin(jeu):
     jdt=False
@@ -144,6 +150,7 @@ def page_jeu_magasin(jeu):
                     if p.returncode==0:
                         os.system("pip install "+r)
                     else: print(tl[18]+r+tl[19])
+                    pp=subprocess.Popen('python -c "del '+r+'"')
             except:
                 print(tl[20])
         page_jeu_magasin(jeu)

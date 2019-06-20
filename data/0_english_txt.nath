@@ -42,3 +42,4 @@ You are in the main menu, what do you want to do?
  1-see my games installed
  2-see available games
  q-exit
+WARNING: You are under python2, it is strongly recommended to use python3, otherwise, you may have many problems of compatibility.
