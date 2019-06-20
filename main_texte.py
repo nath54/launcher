@@ -40,7 +40,6 @@ def inp(txt):
     if vp[0]==2: return raw_input(txt)
     else: return input(txt)
 
-
 fp="params.nath"
 lll=[]
 if not fp in os.listdir(direm):
@@ -63,7 +62,6 @@ if not fp in os.listdir(direm):
 f=open(direm+fp,"r").read()
 tl=open("data/"+f,"r",encoding="utf-8").read().split("\n")
 
-
 c="#"
 cc="|"
 ccc=","
@@ -76,7 +74,7 @@ if vp[0]==2:
 for o in os.listdir(direj):
     if o[-1]=="1":  shutil.rmtree(direj+o)
 
-def page_jeu_magasin(jeu):
+def page_jeu_magasin(jeu,tl):
     jdt=False
     nmj=False
     version_i=""
@@ -152,9 +150,9 @@ def page_jeu_magasin(jeu):
                     else: print(tl[18]+r+tl[19])
             except:
                 print(tl[20])
-        page_jeu_magasin(jeu)
+        page_jeu_magasin(jeu,tl)
 
-def magasin():
+def magasin(tl):
     jeux=[]
     try:
         url="https://raw.githubusercontent.com/nath54/launcher_data/master/data.nath"
@@ -189,11 +187,11 @@ def magasin():
         try:
             choix=int(choix)-1
             if choix>=0 and choix < len(jeux):
-                page_jeu_magasin(jeux[choix])
+                page_jeu_magasin(jeux[choix],tl)
             else:
                 print(tl[26])
         except: print(tl[27])
-        magasin()
+        magasin(tl)
 
 def calc_taille_dossier(dj,taille):
     for o in os.listdir(dj):
@@ -204,7 +202,7 @@ def calc_taille_dossier(dj,taille):
             taille=calc_taille_dossier(dj+"/"+o+"/",taille)
     return taille
 
-def page_jeu_b(dj):
+def page_jeu_b(dj,tl):
     taille=calc_taille_dossier(dj,0)
     nom=dj.split("/")[len(dj.split("/"))-1]
     print("")
@@ -240,12 +238,12 @@ def page_jeu_b(dj):
                     if ff not in [""," ","\b","'b","b''",'b"']:jex.append( ff.split(c) )
                 for j in jex:
                     if j[0]==nom: jj=j
-                if jj!=None: page_jeu_magasin(jj)
+                if jj!=None: page_jeu_magasin(jj,tl)
                 else: print(tl[36])
             else: print(tl[36])
-        if choix not in ["2"]: page_jeu_b(dj)
+        if choix not in ["2"]: page_jeu_b(dj,tl)
 
-def bibliotheque():
+def bibliotheque(tl):
     jeux=[]
     for o in os.listdir(direj): jeux.append(o)
     print("")
@@ -262,16 +260,44 @@ def bibliotheque():
         try:
             choix=int(choix)-1
             if choix>=0 and choix < len(jeux):
-                page_jeu_b(direj+jeux[choix])
+                page_jeu_b(direj+jeux[choix],tl)
             else:
                 print(tl[39])
         except: print(tl[39])
-        bibliotheque()
-    
+        bibliotheque(tl)
 
+def parametres(tl):
+    print("")
+    print("#################################################################")
+    print("")
+    print(tl[46])
+    print(tl[47])
+    print(tl[48])
+    choix=inp(" : ")
+    if choix!="q":
+        if choix=="1":
+            lll=[]
+            for ll in os.listdir("data/"):
+                    if ll[-5:]==".nath": lll.append(ll)
+            print(tl[49])
+            for l in lll:
+                print("    "+str(lll.index(l))+"-"+l.split("_") [1])
+            choix=inp(" : ")
+            try:
+                i=int(choix)
+                l=lll[i]
+            except:
+                print(tl[50])
+                l=lll[0]
+            f=open(direm+fp,'w')
+            f.write(l)
+            f.close()
+            f=open(direm+fp,"r").read()
+            tl=open("data/"+f,"r",encoding="utf-8").read().split("\n")
+        tl=parametres(tl)
+    return tl
 
-def menu():
-    #try:
+def menu(tl):
     try:
         url="https://raw.githubusercontent.com/nath54/launcher_data/master/data.nath"
         req = requests.get(url)
@@ -290,14 +316,16 @@ def menu():
     print(tl[40])
     print(tl[41])
     print(tl[42])
+    print(tl[45])
     print(tl[43])
     choix=inp(" : ")
-    if choix == "1": bibliotheque()
-    elif choix == "2": magasin()
+    if choix == "1": bibliotheque(tl)
+    elif choix == "2": magasin(tl)
+    elif choix == "3": tl=parametres(tl)
     elif choix == "q": exit()
-    menu()
+    menu(tl)
 
-menu()
+menu(tl)
 
 
 
