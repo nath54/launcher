@@ -74,6 +74,11 @@ if vp[0]==2:
 for o in os.listdir(direj):
     if o[-1]=="1":  shutil.rmtree(direj+o)
 
+version_actuelle=int(open("version","r").read())
+urlv=
+
+
+
 def page_jeu_magasin(jeu,tl):
     jdt=False
     nmj=False
