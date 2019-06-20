@@ -75,7 +75,7 @@ for o in os.listdir(direj):
     if o[-1]=="1":  shutil.rmtree(direj+o)
 
 version_actuelle=int(open("version","r").read())
-urlv=
+urlv=""
 
 
 
