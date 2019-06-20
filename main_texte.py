@@ -74,10 +74,20 @@ if vp[0]==2:
 for o in os.listdir(direj):
     if o[-1]=="1":  shutil.rmtree(direj+o)
 
-version_actuelle=int(open("version","r").read())
-urlv=""
+version_actuelle=float(str(open("version","r").read().replace("\n","")))
+urlv="https://raw.githubusercontent.com/nath54/launcher/master/version"
+dv=""
+req = requests.get(urlv)
+for chunk in req.iter_content(1000):  dv+=str(chunk,"utf-8")
+try:
+    dv=float(str(dv.replace("\n","")))
+except: dv=0
 
-
+print(tl[51]+str(version_actuelle))
+print(tl[52]+str(dv))
+if version_actuelle < dv: print(tl[53])
+else: print(tl[54])
+inp(">")
 
 def page_jeu_magasin(jeu,tl):
     jdt=False
@@ -226,7 +236,14 @@ def page_jeu_b(dj,tl):
     print(tl[33])
     choix=inp(" : ")
     if choix!="q":
-        if choix=="1": os.system("cd "+str(dj)+"&& python main.py")
+        if choix=="1":
+            print("")
+            print("##############################")
+            print("")
+            print(tl[55]+nom)
+            print("")
+            os.system("cd "+str(dj)+"&& python main.py")
+            print("")
         if choix=="2":
             print("")
             print(tl[34])
