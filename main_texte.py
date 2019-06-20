@@ -123,10 +123,10 @@ def page_jeu_magasin(jeu):
                 for chunk in req.iter_content(1000):
                     txxt+=chunk
                     tt+=len(chunk)
-                    if len(str(tt))>9: print(str(tt/10**9)+"Go")
-                    if len(str(tt))>6: print(str(tt/10**6)+"Mo")
-                    if len(str(tt))>3: print(str(tt/10**3)+"Ko")
-                    else: print(str(tt)+"o")
+                if len(str(tt))>9: print(str(tt/10**9)+"Go")
+                if len(str(tt))>6: print(str(tt/10**6)+"Mo")
+                if len(str(tt))>3: print(str(tt/10**3)+"Ko")
+                else: print(str(tt)+"o")
                 f=open(direj+jeu[0]+".zip","wb")
                 f.write(txxt)
                 f.close()
@@ -150,7 +150,6 @@ def page_jeu_magasin(jeu):
                     if p.returncode==0:
                         os.system("pip install "+r)
                     else: print(tl[18]+r+tl[19])
-                    pp=subprocess.Popen('python -c "del '+r+'"')
             except:
                 print(tl[20])
         page_jeu_magasin(jeu)
