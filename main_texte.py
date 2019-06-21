@@ -1,5 +1,6 @@
 #coding:utf-8
-#launcher texte
+#!/bin/python3
+
 import os,sys
 try:
     import requests
